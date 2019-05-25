@@ -249,6 +249,7 @@ var Theme = function () {
 			var head = document.head;
 			var style = document.createElement('style');
 
+			style.setAttribute('data-swup-theme', '');
 			style.appendChild(document.createTextNode(styles));
 
 			this._addedStyleElements.push(style);

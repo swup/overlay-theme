@@ -1,6 +1,6 @@
 {
   "name": "@swup/overlay-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Swup theme with sliding overlay",
   "main": "lib/index.js",
   "scripts": {
@@ -28,10 +28,10 @@
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "webpack": "^4.30.0",
+    "webpack": "^4.32.2",
     "webpack-cli": "^3.1.1"
   },
   "dependencies": {
-    "@swup/theme": "^1.0.2"
+    "@swup/theme": "^1.0.3"
   }
 }
