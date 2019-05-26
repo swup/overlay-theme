@@ -223,11 +223,14 @@ var Theme = function () {
 			});
 
 			// remove added classnames
-			this._classNameAddedToElements.forEach(function (element) {
-				element.className.split(' ').forEach(function (classItem) {
-					if (new RegExp('^swup-transition-').test(classItem)) {
-						document.documentElement.classList.remove(classItem);
-					}
+			this._classNameAddedToElements.forEach(function (selector) {
+				var elements = Array.prototype.slice.call(document.querySelectorAll(selector));
+				elements.forEach(function (element) {
+					element.className.split(' ').forEach(function (classItem) {
+						if (new RegExp('^swup-transition-').test(classItem)) {
+							element.classList.remove(classItem);
+						}
+					});
 				});
 			});
 		}
@@ -272,7 +275,7 @@ var Theme = function () {
 
 			// save so it can be later removed
 			elements.forEach(function (element) {
-				_this._classNameAddedToElements.push(element);
+				_this._classNameAddedToElements.push(selector);
 				element.classList.add('swup-transition-' + name);
 			});
 
