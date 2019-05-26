@@ -189,11 +189,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Theme = function () {
 	function Theme() {
+		var _this = this;
+
 		_classCallCheck(this, Theme);
 
 		this._addedStyleElements = [];
 		this._addedHTMLContent = [];
 		this._classNameAddedToElements = [];
+
+		this._addClassNameToElement = function () {
+			_this._classNameAddedToElements.forEach(function (item) {
+				var elements = Array.prototype.slice.call(document.querySelectorAll(item.selector));
+				elements.forEach(function (element) {
+					element.classList.add('swup-transition-' + item.name);
+				});
+			});
+		};
+
 		this.isSwupPlugin = true;
 	}
 
@@ -203,6 +215,9 @@ var Theme = function () {
 			// save original and replace animationSelector option
 			this._originalAnimationSelectorOption = String(this.swup.options.animationSelector);
 			this.swup.options.animationSelector = '[class*="swup-transition-"]';
+
+			// add classes after each content replace
+			this.swup.on('contentReplaced', this._addClassNameToElement);
 		}
 	}, {
 		key: '_afterUnmount',
@@ -223,8 +238,8 @@ var Theme = function () {
 			});
 
 			// remove added classnames
-			this._classNameAddedToElements.forEach(function (selector) {
-				var elements = Array.prototype.slice.call(document.querySelectorAll(selector));
+			this._classNameAddedToElements.forEach(function (item) {
+				var elements = Array.prototype.slice.call(document.querySelectorAll(item.selector));
 				elements.forEach(function (element) {
 					element.className.split(' ').forEach(function (classItem) {
 						if (new RegExp('^swup-transition-').test(classItem)) {
@@ -233,6 +248,8 @@ var Theme = function () {
 					});
 				});
 			});
+
+			this.swup.off('contentReplaced', this._addClassNameToElement);
 		}
 	}, {
 		key: 'mount',
@@ -269,22 +286,11 @@ var Theme = function () {
 	}, {
 		key: 'addClassName',
 		value: function addClassName(selector, name) {
-			var _this = this;
-
-			var elements = Array.prototype.slice.call(document.querySelectorAll(selector));
-
 			// save so it can be later removed
-			elements.forEach(function (element) {
-				_this._classNameAddedToElements.push(selector);
-				element.classList.add('swup-transition-' + name);
-			});
+			this._classNameAddedToElements.push({ selector: selector, name: name });
 
-			this.swup.on('contentReplaced', function () {
-				var elements = Array.prototype.slice.call(document.querySelectorAll(selector));
-				elements.forEach(function (element) {
-					element.classList.add('swup-transition-' + name);
-				});
-			});
+			// add class the first time
+			this._addClassNameToElement();
 		}
 
 		// this is here so we can tell if plugin was created by extending this class
