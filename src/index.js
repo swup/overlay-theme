@@ -8,7 +8,9 @@ export default class OverlayTheme extends Theme {
 		super();
 
 		const defaultOptions = {
-			color: '#2D2E82'
+			color: '#2D2E82',
+			duration: 600,
+			direction: 'to-right',
 		};
 
 		this.options = {
@@ -19,6 +21,10 @@ export default class OverlayTheme extends Theme {
 
 	mount() {
 		this.applyStyles(styles);
-		this.applyHTML(`<div class="swup-transition-overlay" style="background: ${this.options.color}"></div>`);
+		this.applyHTML(`
+			<div class="swup-transition-overlay"
+			style="background: ${this.options.color}; transition-duration: ${this.options.duration}ms"
+			data-direction="${this.options.direction}"></div>
+		`);
 	}
 }
