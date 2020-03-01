@@ -42,7 +42,7 @@ Defaults to 600 (ms).
 
 ### direction 
 Changes the direction of the overlay animation.    
-Defaults to `to-right`. Available values: `to-right`, `to-left`, `to-bottom` and `to-left`.
+Defaults to `to-right`. Available values: `to-right`, `to-left`, `to-bottom` and `to-top`.
 
 ### Default options
 ```javascript
