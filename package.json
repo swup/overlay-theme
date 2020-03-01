@@ -1,6 +1,6 @@
 {
   "name": "@swup/overlay-theme",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Swup theme with sliding overlay",
   "main": "lib/index.js",
   "scripts": {

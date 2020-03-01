@@ -152,7 +152,9 @@ var OverlayTheme = function (_Theme) {
 
 
 		var defaultOptions = {
-			color: '#2D2E82'
+			color: '#2D2E82',
+			duration: 600,
+			direction: 'to-right'
 		};
 
 		_this.options = _extends({}, defaultOptions, options);
@@ -163,7 +165,7 @@ var OverlayTheme = function (_Theme) {
 		key: 'mount',
 		value: function mount() {
 			this.applyStyles(_index2.default);
-			this.applyHTML('<div class="swup-transition-overlay" style="background: ' + this.options.color + '"></div>');
+			this.applyHTML('\n\t\t\t<div class="swup-transition-overlay"\n\t\t\tstyle="background: ' + this.options.color + '; transition-duration: ' + this.options.duration + 'ms"\n\t\t\tdata-direction="' + this.options.direction + '"></div>\n\t\t');
 		}
 	}]);
 
@@ -308,7 +310,7 @@ exports.default = Theme;
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".swup-transition-overlay {\n  transition: transform 0.6s;\n  pointer-events: none;\n  z-index: 9999;\n  transform: translate3d(-120%, 0, 0) skewX(5deg);\n  width: 120vw;\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  right: -10%;\n  bottom: 0;\n  left: -10%;\n  opacity: 0;\n}\nhtml.is-changing .swup-transition-overlay {\n  opacity: 1;\n}\nhtml.is-animating .swup-transition-overlay {\n  transform: translate3d(0, 0, 0) skewX(5deg);\n}\nhtml.is-rendering .swup-transition-overlay {\n  transition-delay: 0.2s;\n  transform: translate3d(120%, 0, 0) skewX(2deg);\n}\n", ""]);
+exports.push([module.i, ".swup-transition-overlay {\n  opacity: 0;\n  z-index: 9999;\n  position: fixed;\n  pointer-events: none;\n  transition-property: transform;\n}\nhtml.is-changing .swup-transition-overlay {\n  opacity: 1;\n}\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-right\"],\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-left\"],\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-bottom\"],\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-top\"] {\n  transition-delay: 0.2s;\n}\n.swup-transition-overlay[data-direction=\"to-right\"],\n.swup-transition-overlay[data-direction=\"to-left\"] {\n  top: 0;\n  bottom: 0;\n  left: -10%;\n  right: -10%;\n  width: 120vw;\n  height: 100vh;\n}\n.swup-transition-overlay[data-direction=\"to-right\"] {\n  transform: translate3d(-120%, 0, 0) skewX(5deg);\n}\nhtml.is-animating .swup-transition-overlay[data-direction=\"to-right\"] {\n  transform: translate3d(0, 0, 0) skewX(5deg);\n}\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-right\"] {\n  transform: translate3d(120%, 0, 0) skewX(5deg);\n}\n.swup-transition-overlay[data-direction=\"to-left\"] {\n  transform: translate3d(120%, 0, 0) skewX(-5deg);\n}\nhtml.is-animating .swup-transition-overlay[data-direction=\"to-left\"] {\n  transform: translate3d(0, 0, 0) skewX(-5deg);\n}\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-left\"] {\n  transform: translate3d(-120%, 0, 0) skewX(-5deg);\n}\n.swup-transition-overlay[data-direction=\"to-top\"],\n.swup-transition-overlay[data-direction=\"to-bottom\"] {\n  top: -10%;\n  bottom: -10%;\n  left: 0;\n  right: 0;\n  width: 100vw;\n  height: 120vh;\n}\n.swup-transition-overlay[data-direction=\"to-bottom\"] {\n  transform: translate3d(0, -120%, 0) skewY(5deg);\n}\nhtml.is-animating .swup-transition-overlay[data-direction=\"to-bottom\"] {\n  transform: translate3d(0, 0, 0) skewY(5deg);\n}\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-bottom\"] {\n  transform: translate3d(0, 120%, 0) skewY(5deg);\n}\n.swup-transition-overlay[data-direction=\"to-top\"] {\n  transform: translate3d(0, 120%, 0) skewY(-5deg);\n}\nhtml.is-animating .swup-transition-overlay[data-direction=\"to-top\"] {\n  transform: translate3d(0, 0, 0) skewY(-5deg);\n}\nhtml.is-rendering .swup-transition-overlay[data-direction=\"to-top\"] {\n  transform: translate3d(0, -120%, 0) skewY(-5deg);\n}\n", ""]);
 
 
 
