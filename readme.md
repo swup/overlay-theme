@@ -38,7 +38,7 @@ Defaults to `#2D2E82`.
 
 ### duration
 Changes the duration of the overlay animation.
-Defaults to `600(ms)`.
+Defaults to `600` (ms).
 
 ### direction
 Changes the direction of the overlay animation.
