@@ -53,7 +53,7 @@ You can override the plugin's custom properties to fine-tweak the animation.
 These are the defaults:
 
 ```css
-html {
+body {
   --swup-overlay-theme-color: #2D2E82;
   --swup-overlay-theme-duration: .6s;
   --swup-overlay-theme-delay: .2s;
