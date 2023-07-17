@@ -5,7 +5,9 @@ export default class SwupOverlayTheme extends Theme {
 	name = 'SwupOverlayTheme';
 
 	defaults = {
-		direction: 'to-right'
+		direction: 'to-right',
+		color: undefined,
+		duration: undefined
 	};
 
 	directions = ['to-left', 'to-right', 'to-top', 'to-bottom'];
@@ -19,8 +21,20 @@ export default class SwupOverlayTheme extends Theme {
 	}
 
 	mount() {
-		const { direction } = this.options;
 		this.applyStyles(styles);
-		this.applyHTML(`<div class="swup-transition-overlay" data-direction="${direction}"></div>`);
+		this.applyHTML(this.createOverlay());
+	}
+
+	createOverlay() {
+		const { direction } = this.options;
+		const color = this.options.color !== undefined ? this.options.color : 'inherit';
+		const duration = this.options.duration !== undefined ? `${this.options.duration}ms` : 'inherit';
+		return `
+			<div
+				class="swup-transition-overlay"
+				data-direction="${direction}"
+				style="--swup-overlay-theme-color:${color};--swup-overlay-theme-duration:${duration};"
+			></div>
+		`;
 	}
 }
