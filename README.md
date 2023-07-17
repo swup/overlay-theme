@@ -61,3 +61,11 @@ html {
   --swup-overlay-theme-skew: 5deg;
 }
 ```
+
+To style the overlay directly, use the class name `.swup-transition-overlay`:
+
+```css
+.swup-transition-overlay {
+  background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+}
+```
