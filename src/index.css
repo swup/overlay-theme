@@ -14,15 +14,15 @@ html {
   --swup-overlay-height-value: calc(100vh * var(--swup-overlay-y-scale));
   --swup-overlay-transform-x-value: calc(100% * var(--swup-overlay-x-scale));
   --swup-overlay-transform-y-value: calc(100% * var(--swup-overlay-y-scale));
-  --swup-overlay-top-value: 0;
-  --swup-overlay-right-value: auto;
+  --swup-overlay-top-value: calc((1 - var(--swup-overlay-y-scale)) * 0.5 * 100vh);
+  --swup-overlay-left-value: calc((1 - var(--swup-overlay-x-scale)) * 0.5 * 100vw);
   --swup-overlay-bottom-value: auto;
-  --swup-overlay-left-value: 0;
+  --swup-overlay-right-value: auto;
   --swup-overlay-skew-value: calc(var(--swup-overlay-theme-skew) * var(--swup-overlay-skew-direction));
   position: fixed;
   top: var(--swup-overlay-top-value);
-  bottom: var(--swup-overlay-bottom-value);
   left: var(--swup-overlay-left-value);
+  bottom: var(--swup-overlay-bottom-value);
   right: var(--swup-overlay-right-value);
   width: var(--swup-overlay-width-value);
   height: var(--swup-overlay-height-value);
@@ -62,7 +62,7 @@ html.is-rendering .swup-transition-overlay[data-direction="to-right"] {
 
 .swup-transition-overlay[data-direction="to-left"] {
   --swup-overlay-skew-direction: -1;
-  transform: translate3d(var(--swup-overlay-transform-x-value) 0, 0) skewX(var(--swup-overlay-skew-value));
+  transform: translate3d(var(--swup-overlay-transform-x-value), 0, 0) skewX(var(--swup-overlay-skew-value));
 }
 
 html.is-animating .swup-transition-overlay[data-direction="to-left"] {
@@ -77,12 +77,7 @@ html.is-rendering .swup-transition-overlay[data-direction="to-left"] {
 
 .swup-transition-overlay[data-direction="to-top"],
 .swup-transition-overlay[data-direction="to-bottom"] {
-  top: -10%;
-  bottom: -10%;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 120vh;
+  --swup-overlay-y-scale: var(--swup-overlay-theme-scale);
 }
 
 /* Top to bottom */
@@ -92,7 +87,7 @@ html.is-rendering .swup-transition-overlay[data-direction="to-left"] {
 }
 
 html.is-animating .swup-transition-overlay[data-direction="to-bottom"] {
-  transform: translate3d(0, 0, 0) skewY(5deg);
+  transform: translate3d(0, 0, 0) skewY(var(--swup-overlay-skew-value));
 }
 
 html.is-rendering .swup-transition-overlay[data-direction="to-bottom"] {

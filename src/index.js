@@ -13,7 +13,7 @@ export default class SwupOverlayTheme extends Theme {
 	constructor(options = {}) {
 		super();
 		this.options = { ...this.defaults, ...options };
-		if (!directions.includes(this.options.direction)) {
+		if (!this.directions.includes(this.options.direction)) {
 			throw new Error(`Invalid direction: ${direction}`);
 		}
 	}
