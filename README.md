@@ -1,24 +1,25 @@
 # Swup Overlay Theme
-Theme for slide in/out animation of overlay.
+
+A swup theme for showing an overlay during animations.
+
+Makes an overlay slide on top of the page until the new page is shown.
 
 ## Installation
 
-This theme can be installed with npm
+Install the theme from npm and import it into your bundle.
 
 ```bash
 npm install @swup/overlay-theme
 ```
 
-and included with import
-
-```javascript
+```js
 import SwupOverlayTheme from '@swup/overlay-theme';
 ```
 
-or included from the dist folder
+Or include the minified production file from a CDN:
 
 ```html
-<script src="./dist/SwupOverlayTheme.js"></script>
+<script src="https://unpkg.com/@swup/overlay-theme@2"></script>
 ```
 
 ## Usage
@@ -32,25 +33,31 @@ const swup = new Swup({
 ```
 
 ## Options
-### color
-Changes color of the overlay element.
-Defaults to `#2D2E82`.
-
-### duration
-Changes the duration of the overlay animation.
-Defaults to `600` (ms).
 
 ### direction
+
 Changes the direction of the overlay animation.
 Defaults to `to-right`. Available values: `to-right`, `to-left`, `to-bottom` and `to-top`.
 
 ### Default options
+
 ```javascript
 new SwupOverlayTheme({
-    color: '#2D2E82',
-    duration: 600,
-    direction: 'to-right',
+  direction: 'to-right'
 });
 ```
 
+## Customization
 
+You can override the plugin's custom properties to fine-tweak the animation.
+These are the defaults:
+
+```css
+html {
+  --swup-overlay-theme-color: #2D2E82;
+  --swup-overlay-theme-duration: .6s;
+  --swup-overlay-theme-delay: .2s;
+  --swup-overlay-theme-scale: 1.2;
+  --swup-overlay-theme-skew: 5deg;
+}
+```

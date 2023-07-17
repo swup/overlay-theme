@@ -1,30 +1,26 @@
 import Theme from '@swup/theme';
-import styles from './index.styl';
+import styles from './index.css';
 
-export default class OverlayTheme extends Theme {
-	name = 'OverlayTheme';
+export default class SwupOverlayTheme extends Theme {
+	name = 'SwupOverlayTheme';
 
-	constructor(options) {
+	defaults = {
+		direction: 'to-right'
+	};
+
+	directions = ['to-left', 'to-right', 'to-top', 'to-bottom'];
+
+	constructor(options = {}) {
 		super();
-
-		const defaultOptions = {
-			color: '#2D2E82',
-			duration: 600,
-			direction: 'to-right',
-		};
-
-		this.options = {
-			...defaultOptions,
-			...options
-		};
+		this.options = { ...this.defaults, ...options };
+		if (!directions.includes(this.options.direction)) {
+			throw new Error(`Invalid direction: ${direction}`);
+		}
 	}
 
 	mount() {
+		const { direction } = this.options;
 		this.applyStyles(styles);
-		this.applyHTML(`
-			<div class="swup-transition-overlay"
-			style="background: ${this.options.color}; transition-duration: ${this.options.duration}ms"
-			data-direction="${this.options.direction}"></div>
-		`);
+		this.applyHTML(`<div class="swup-transition-overlay" data-direction="${direction}"></div>`);
 	}
 }
