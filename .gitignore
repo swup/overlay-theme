@@ -14,6 +14,7 @@ wiki-wishlist
 .editorconfig
 .idea
 lib
+dist
 /plugins
 .vscode/*
 !.vscode/settings.json
