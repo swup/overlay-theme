@@ -1,6 +1,6 @@
 # Swup Overlay Theme
 
-A swup theme for showing an overlay during animations.
+A [swup](https://swup.js.org) theme for showing an overlay during animations.
 
 Makes an overlay slide on top of the page until the new page is shown.
 
