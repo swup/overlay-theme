@@ -3,20 +3,12 @@ import styles from './index.css';
 
 type Direction = 'to-left' | 'to-right' | 'to-top' | 'to-bottom';
 
-type Options = {
-	direction: Direction;
-	color?: string;
-	duration?: number;
-}
+type Options = { direction: Direction; color?: string; duration?: number };
 
 export default class SwupOverlayTheme extends Theme {
 	name = 'SwupOverlayTheme';
 
-	defaults: Options = {
-		direction: 'to-right',
-		color: undefined,
-		duration: undefined
-	};
+	defaults: Options = { direction: 'to-right', color: undefined, duration: undefined };
 	options: Options;
 
 	directions: Direction[] = ['to-left', 'to-right', 'to-top', 'to-bottom'];
@@ -38,7 +30,8 @@ export default class SwupOverlayTheme extends Theme {
 	createOverlay() {
 		const { direction } = this.options;
 		const color = this.options.color !== undefined ? this.options.color : 'inherit';
-		const duration = this.options.duration !== undefined ? `${this.options.duration}ms` : 'inherit';
+		const duration =
+			this.options.duration !== undefined ? `${this.options.duration}ms` : 'inherit';
 		return `
 			<div
 				class="swup-transition-overlay"
