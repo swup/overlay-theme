@@ -1,22 +1,32 @@
 import Theme from '@swup/theme';
 import styles from './index.css';
 
+type Direction = 'to-left' | 'to-right' | 'to-top' | 'to-bottom';
+
+type Options = {
+	direction: Direction;
+	color?: string;
+	duration?: number;
+}
+
 export default class SwupOverlayTheme extends Theme {
 	name = 'SwupOverlayTheme';
 
-	defaults = {
+	defaults: Options = {
 		direction: 'to-right',
 		color: undefined,
 		duration: undefined
 	};
+	options: Options;
 
-	directions = ['to-left', 'to-right', 'to-top', 'to-bottom'];
+	directions: Direction[] = ['to-left', 'to-right', 'to-top', 'to-bottom'];
 
-	constructor(options = {}) {
+	constructor(options: Partial<Options> = {}) {
 		super();
 		this.options = { ...this.defaults, ...options };
+
 		if (!this.directions.includes(this.options.direction)) {
-			throw new Error(`Invalid direction: ${direction}`);
+			throw new Error(`Invalid direction: ${this.options.direction}`);
 		}
 	}
 
