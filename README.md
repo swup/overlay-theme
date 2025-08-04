@@ -54,9 +54,9 @@ These are the defaults:
 
 ```css
 body {
-  --swup-overlay-theme-color: #2D2E82;
-  --swup-overlay-theme-duration: .6s;
-  --swup-overlay-theme-delay: .2s;
+  --swup-overlay-theme-color: #2d2e82;
+  --swup-overlay-theme-duration: 0.6s;
+  --swup-overlay-theme-delay: 0.2s;
   --swup-overlay-theme-scale: 1.2;
   --swup-overlay-theme-skew: 5deg;
 }
@@ -66,6 +66,6 @@ To style the overlay directly, use the class name `.swup-transition-overlay`:
 
 ```css
 .swup-transition-overlay {
-  background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+  background: linear-gradient(45deg, rgb(131, 58, 180), rgb(253, 29, 29), rgb(252, 176, 69));
 }
 ```
